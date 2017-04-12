@@ -3,11 +3,11 @@ if &compatible
   set nocompatible
 endif
 
-set runtimepath+=/home/prz/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/home/prz/.cache/dein')
-  call dein#begin('/home/prz/.cache/dein')
-  call dein#add('/home/prz/.cache/dein/repos/github.com/Shougo/dein.vim')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " plugins
   call dein#add('ap/vim-buftabline')

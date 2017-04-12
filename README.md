@@ -10,13 +10,17 @@ Neovim configuration meant mostly for Python.
 
 # Installation
 ### Config
-First clone the repository:
 
+1. Install [dein](https://github.com/Shougo/dein.vim):
+```sh
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
+```
+2. Clone the repository:
 ```sh
 git clone https://github.com/vanzi/nvim ~/.config/nvim
 ```
-
-Then start neovim to install all plugins.
+3. Start neovim to install all plugins automatically.
 
 ### True Color (24-bit)
 
