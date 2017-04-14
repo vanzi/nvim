@@ -4,9 +4,9 @@ Neovim configuration meant mostly for Python.
 
 # Requirements
 
-* [neovim](https://github.com/neovim/neovim) 
+* [neovim](https://github.com/neovim/neovim)
 * [python-client](https://github.com/neovim/python-client) for neovim
-* [pylama](https://github.com/klen/pylama) (or other linters as needed)
+* [pylama](https://github.com/klen/pylama), [mypy](https://github.com/python/mypy) and other linters as needed
 
 # Installation
 ### Config
