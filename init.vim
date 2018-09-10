@@ -19,6 +19,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('scrooloose/nerdcommenter')
   call dein#add('davidhalter/jedi-vim')
   call dein#add('vim-syntastic/syntastic')
+  call dein#add('fatih/vim-go')
 
   call dein#end()
   call dein#save_state()
@@ -108,10 +109,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["pylama", "mypy"]
-let g:syntastic_python_mypy_args = "--ignore-missing-imports"
+let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_flake8_args = "--config test-conf/flake8.ini"
 
 " file types
 au BufNewFile,BufRead *.ejs set filetype=html
