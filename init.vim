@@ -21,6 +21,7 @@ let g:ycm_extra_conf_vim_data = [
   \]
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_conf.py'
 nnoremap <leader>d :YcmCompleter GoTo<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 
 filetype plugin indent on
 syntax enable
@@ -38,6 +39,7 @@ set title
 set number
 set laststatus=2
 
+" soft (80, vertical line) and hard (100, red bg) character caps
 set colorcolumn=80
 highlight ColorColumn ctermbg=8
 
@@ -72,11 +74,10 @@ set iskeyword+=.
 cmap w!! w !sudo tee >/dev/null %
 
 " keymap conf
-map <Leader>, :bp<CR>
-map <Leader>. :bn<CR>
-map <S-Tab> :lcl<CR>:bn<CR>
-map <Leader><Leader> :only<CR>
-map F :lne<CR>
+map <Leader>, :bp<CR>                           " prev buffer
+map <Leader>. :bn<CR>                           " next buffer
+map <S-Tab> :lcl<CR>:bn<CR>                     " close quickfix, next buffer
+map <Leader><Leader> :only<CR>                  " close help buffer
 map <Leader>jf :%!python -m json.tool<CR>
 
 " paste
@@ -89,7 +90,6 @@ nnoremap <silent> <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " plugins
-let g:lightline = {'colorscheme': 'onedark'}
 let g:ctrlp_custom_ignore = {
     \ 'dir':  '\vvenv\d*$',
     \ 'file': '\v[\/]\.(git|hg|svn|pyc)$',

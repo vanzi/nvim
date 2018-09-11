@@ -1,6 +1,7 @@
 # Overview
 
-Neovim configuration meant mostly for Python.
+Minimal neovim configuration for Python with sane defaults, asynchronous
+linters and autocomplete. And inline blame, obviously.
 
 # Requirements
 
