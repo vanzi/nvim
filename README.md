@@ -6,10 +6,6 @@ linters and autocomplete. And inline blame, obviously.
 # Requirements
 
 * [neovim](https://github.com/neovim/neovim)
-* [python-client](https://github.com/neovim/python-client) for neovim
-* [flake8](http://flake8.pycqa.org/en/latest/)
-* [flake8-docstrings](https://pypi.org/project/flake8-docstrings/)
-* [gitlint](https://jorisroovers.github.io/gitlint/)
 
 # Installation
 ### Config
@@ -18,20 +14,24 @@ linters and autocomplete. And inline blame, obviously.
 ```sh
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 ```
-2. Install [vim-plug](https://github.com/junegunn/vim-plug):
+2. Install required `pip` packages:
+```sh
+pip install neovim flake8 flake8-docstrings gitlint
+```
+3. Install [vim-plug](https://github.com/junegunn/vim-plug):
 ```sh
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
-3. Clone the repository:
+4. Clone the repository:
 ```sh
 git clone https://github.com/vanzi/nvim ~/.config/nvim
 ```
-4. Start neovim and run:
+5. Start neovim and run:
 ```sh
 :PlugInstall
 ```
-5. Exit neovim and install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) dependencies:
+6. Exit neovim and compile dependencies for [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 ```sh
 sudo apt-get install python-dev python3-dev build-essential cmake
 
