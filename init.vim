@@ -1,30 +1,17 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'ap/vim-buftabline'
 Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'ap/vim-buftabline'
 Plug 'sheerun/vim-polyglot'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 call plug#end()
-
-" code completion via ycm
-let g:ycm_python_interpreter_path = ''
-let g:ycm_python_sys_path = []
-let g:ycm_extra_conf_vim_data = [
-  \  'g:ycm_python_interpreter_path',
-  \  'g:ycm_python_sys_path'
-  \]
-let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_conf.py'
-nnoremap <leader>d :YcmCompleter GoTo<CR>
-nnoremap <leader>r :YcmCompleter GoToReferences<CR>
-
-filetype plugin indent on
-syntax enable
 
 " styles
 if (has("nvim"))
@@ -67,18 +54,21 @@ set smartcase                                   " case insensitive search if all
 set list listchars=tab:▷⋅,trail:⋅,nbsp:⋅
 set iskeyword+=.
 
-" space toggles off search highlight
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
 " save as root
 cmap w!! w !sudo tee >/dev/null %
 
+" space toggles off search highlight
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+
 " keymap conf
-map <Leader>, :bp<CR>                           " prev buffer
-map <Leader>. :bn<CR>                           " next buffer
-map <S-Tab> :lcl<CR>:bn<CR>                     " close quickfix, next buffer
-map <Leader><Leader> :only<CR>                  " close help buffer
-map <Leader>jf :%!python -m json.tool<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>d :YcmCompleter GoTo<CR>
+nnoremap <leader>r :YcmCompleter GoToReferences<CR>
+nnoremap <Leader>, :bp<CR>
+nnoremap <Leader>. :bn<CR>
+nnoremap <S-Tab> :lcl<CR>:bn<CR>
+nnoremap <Leader><Leader> :only<CR>
+nnoremap <Leader>jf :%!python -m json.tool<CR>
 
 " paste
 set pastetoggle=<F3>
@@ -90,14 +80,21 @@ nnoremap <silent> <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " plugins
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\vvenv\d*$',
-    \ 'file': '\v[\/]\.(git|hg|svn|pyc)$',
-    \ }
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+
 let g:ale_linters = {
     \   'python': ['flake8'],
     \ }
 let g:ale_python_flake8_options = "--config test-conf/flake8.ini"
 let g:ale_python_flake8_change_directory = 0
 let g:ale_sign_column_always = 1
+
 let g:airline#extensions#ale#enabled = 1
+
+let g:ycm_python_interpreter_path = ''
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_conf.py'

@@ -6,6 +6,10 @@ linters and autocomplete.
 # Requirements
 
 * [neovim](https://github.com/neovim/neovim)
+* System dependencies (for Ubuntu 18.04+):
+```sh
+apt install python-dev python3-dev build-essential cmake silversearcher-ag
+```
 
 # Installation
 ### Config
@@ -13,6 +17,7 @@ linters and autocomplete.
 1. Compile Python with shared libraries support. In `pyenv` this requires:
 ```sh
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+pyenv install 3.6.6
 ```
 2. Install required `pip` packages:
 ```sh
@@ -30,13 +35,6 @@ git clone git@github.com:vanzi/nvim.git ~/.config/nvim
 5. Start neovim and run:
 ```sh
 :PlugInstall
-```
-6. Exit neovim and compile dependencies for [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
-```sh
-sudo apt install python-dev python3-dev build-essential cmake
-
-cd ~/.local/share/nvim/plugged/YouCompleteMe/
-./install.py
 ```
 
 ### True Color (24-bit)
