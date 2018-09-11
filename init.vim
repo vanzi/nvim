@@ -1,38 +1,29 @@
-" dein -----------------------------
-if &compatible
-  set nocompatible
-endif
+call plug#begin('~/.local/share/nvim/plugged')
 
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+Plug 'ap/vim-buftabline'
+Plug 'joshdick/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
+Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe'
 
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+call plug#end()
 
-  " plugins
-  call dein#add('ap/vim-buftabline')
-  call dein#add('joshdick/onedark.vim')
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('sheerun/vim-polyglot')
-  call dein#add('ctrlpvim/ctrlp.vim')
-  call dein#add('tpope/vim-fugitive')
-  call dein#add('scrooloose/nerdcommenter')
-  call dein#add('davidhalter/jedi-vim')
-  call dein#add('vim-syntastic/syntastic')
-  call dein#add('fatih/vim-go')
-
-  call dein#end()
-  call dein#save_state()
-endif
+" code completion via ycm
+let g:ycm_python_interpreter_path = ''
+let g:ycm_python_sys_path = []
+let g:ycm_extra_conf_vim_data = [
+  \  'g:ycm_python_interpreter_path',
+  \  'g:ycm_python_sys_path'
+  \]
+let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_conf.py'
+nnoremap <leader>d :YcmCompleter GoTo<CR>
 
 filetype plugin indent on
 syntax enable
-
-" autoinstall
-if dein#check_install()
-  call dein#install()
-endif
-" dein -----------------------------
 
 " styles
 if (has("nvim"))
@@ -103,20 +94,10 @@ let g:ctrlp_custom_ignore = {
     \ 'dir':  '\vvenv\d*$',
     \ 'file': '\v[\/]\.(git|hg|svn|pyc)$',
     \ }
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ["flake8"]
-let g:syntastic_python_flake8_args = "--config test-conf/flake8.ini"
-
-" file types
-au BufNewFile,BufRead *.ejs set filetype=html
-
-if filereadable('.vim.local')
-    so .vim.local
-endif
+let g:ale_linters = {
+    \   'python': ['flake8'],
+    \ }
+let g:ale_python_flake8_options = "--config test-conf/flake8.ini"
+let g:ale_python_flake8_change_directory = 0
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1

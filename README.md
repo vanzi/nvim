@@ -6,21 +6,37 @@ Neovim configuration meant mostly for Python.
 
 * [neovim](https://github.com/neovim/neovim)
 * [python-client](https://github.com/neovim/python-client) for neovim
-* [pylama](https://github.com/klen/pylama), [mypy](https://github.com/python/mypy) and other linters as needed
+* [flake8](http://flake8.pycqa.org/en/latest/)
+* [flake8-docstrings](https://pypi.org/project/flake8-docstrings/)
+* [gitlint](https://jorisroovers.github.io/gitlint/)
 
 # Installation
 ### Config
 
-1. Install [dein](https://github.com/Shougo/dein.vim):
+1. Compile Python with shared libraries support. In `pyenv` this requires:
 ```sh
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh ./installer.sh ~/.cache/dein
+export PYTHON_CONFIGURE_OPTS="--enable-shared"
 ```
-2. Clone the repository:
+2. Install [vim-plug](https://github.com/junegunn/vim-plug):
+```sh
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+3. Clone the repository:
 ```sh
 git clone https://github.com/vanzi/nvim ~/.config/nvim
 ```
-3. Start neovim to install all plugins automatically.
+4. Start neovim and run:
+```sh
+:PlugInstall
+```
+5. Exit neovim and install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe) dependencies:
+```sh
+sudo apt-get install python-dev python3-dev build-essential cmake
+
+cd ~/.local/share/nvim/plugged/YouCompleteMe/
+./install.py
+```
 
 ### True Color (24-bit)
 
