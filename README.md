@@ -1,7 +1,7 @@
 # Overview
 
 Minimal neovim configuration for Python with sane defaults, asynchronous
-linters and autocomplete. And inline blame, obviously.
+linters and autocomplete.
 
 # Requirements
 
@@ -25,7 +25,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 ```
 4. Clone the repository:
 ```sh
-git clone https://github.com/vanzi/nvim ~/.config/nvim
+git clone git@github.com:vanzi/nvim.git ~/.config/nvim
 ```
 5. Start neovim and run:
 ```sh
@@ -33,7 +33,7 @@ git clone https://github.com/vanzi/nvim ~/.config/nvim
 ```
 6. Exit neovim and compile dependencies for [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 ```sh
-sudo apt-get install python-dev python3-dev build-essential cmake
+sudo apt install python-dev python3-dev build-essential cmake
 
 cd ~/.local/share/nvim/plugged/YouCompleteMe/
 ./install.py
@@ -51,7 +51,25 @@ export TERM=screen-256color
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",screen-256color:Tc"
 ```
-4. Start tmux session and verify Tc is enabled:
+4. Start tmux session and verify `Tc` option is enabled:
 ```sh
 tmux info | grep Tc
 ```
+
+# Quick Start
+
+
+| Keys            | Command                              |
+| --------------- | ------------------------------------ |
+| `F2`            | toggle line numbering                |
+| `F3`            | toggle paste mode                    |
+| `F5`            | remove trailing whitespace in file   |
+| `<C-p>`         | fuzzy file finder                    |
+| `<Leader>cc`    | comment code                         |
+| `<Leader>cu`    | uncomment code                       |
+| `<Leader>d`     | go to definition                     |
+| `<Leader>r`     | find occurences                      |
+| `<Leader>.`     | next buffer                          |
+| `<Leader>,`     | previous buffer                      |
+| `<Leader>jf`    | format json file                     |
+| `:Gblame`       | inline git blame                     |
