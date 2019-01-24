@@ -21,7 +21,7 @@ pyenv install 3.6.6
 ```
 2. Install required `pip` packages:
 ```sh
-pip install neovim flake8 flake8-docstrings gitlint
+pip install pynvim flake8 flake8-docstrings gitlint
 ```
 3. Install [vim-plug](https://github.com/junegunn/vim-plug):
 ```sh
