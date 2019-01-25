@@ -21,7 +21,7 @@ pyenv install 3.6.6
 ```
 2. Install required `pip` packages:
 ```sh
-pip install pynvim flake8 flake8-docstrings gitlint
+pip install pynvim flake8 flake8-docstrings gitlint isort
 ```
 3. Install [vim-plug](https://github.com/junegunn/vim-plug):
 ```sh
@@ -70,4 +70,5 @@ tmux info | grep Tc
 | `<Leader>.`     | next buffer                          |
 | `<Leader>,`     | previous buffer                      |
 | `<Leader>jf`    | format json file                     |
+| `<Leader>s`     | sort imports                         |
 | `:Gblame`       | inline git blame                     |

@@ -10,6 +10,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
@@ -69,6 +70,7 @@ nnoremap <Leader>. :bn<CR>
 nnoremap <S-Tab> :lcl<CR>:bn<CR>
 nnoremap <Leader><Leader> :only<CR>
 nnoremap <Leader>jf :%!python -m json.tool<CR>
+nnoremap <Leader>s :Isort -sp test-conf<CR>
 
 " paste
 set pastetoggle=<F3>
