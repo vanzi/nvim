@@ -84,12 +84,14 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " plugins
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
-let g:ale_linters = {
-    \   'python': ['flake8'],
-    \ }
-let g:ale_python_flake8_options = "--config test-conf/flake8.ini"
-let g:ale_python_flake8_change_directory = 0
+let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
+let g:ale_python_flake8_options = '--config test-conf/flake8.ini'
+let g:ale_python_flake8_change_directory = 0
+let g:ale_python_autopep8_options = '--global-config test-conf/flake8.ini'
+let g:ale_python_isort_options = '-sp ' . fnamemodify('test-conf', ':p')
+let g:ale_linters = {'python': ['flake8']}
+let g:ale_fixers = {'python': ['autopep8', 'isort']}
 
 let g:airline#extensions#ale#enabled = 1
 
