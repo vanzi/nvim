@@ -1,7 +1,7 @@
 # Overview
 
-Minimal neovim configuration for Python with sane defaults, asynchronous
-linters and autocomplete.
+Minimal neovim configuration for Python 3 with sane defaults, asynchronous
+linters (flake8 with plugins), automatic fixers (isort, autopep8) and autocomplete.
 
 # Requirements
 
@@ -17,7 +17,7 @@ apt install python-dev python3-dev build-essential cmake silversearcher-ag
 1. Compile Python with shared libraries support. In `pyenv` this requires:
 ```sh
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
-pyenv install 3.7.3
+pyenv install 3.7.4
 ```
 2. Install required `pip` packages:
 ```sh
@@ -70,5 +70,4 @@ tmux info | grep Tc
 | `<Leader>.`     | next buffer                          |
 | `<Leader>,`     | previous buffer                      |
 | `<Leader>jf`    | format json file                     |
-| `<Leader>s`     | sort imports                         |
 | `:Gblame`       | inline git blame                     |
