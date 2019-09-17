@@ -25,3 +25,5 @@ function updatePrompt {
 }
 export -f updatePrompt
 export PROMPT_COMMAND='updatePrompt'
+
+alias ls='ls --color=auto'

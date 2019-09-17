@@ -1,0 +1,11 @@
+[push]
+    default = current
+[alias]
+    co = checkout
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true

@@ -5,12 +5,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-buftabline'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'tommcdo/vim-fugitive-blame-ext'
 Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
@@ -64,6 +66,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " keymap conf
 nnoremap <C-p> :Files<CR>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
+nnoremap <leader>D :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
 nnoremap <Leader>, :bp<CR>
 nnoremap <Leader>. :bn<CR>
@@ -94,6 +97,10 @@ let g:ale_linters = {'python': ['flake8']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
 
 let g:airline#extensions#ale#enabled = 1
+
+" alternative for vim-buftabline
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 let g:ycm_python_interpreter_path = ''
 let g:ycm_python_sys_path = []
