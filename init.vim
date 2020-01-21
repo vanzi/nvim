@@ -10,7 +10,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py', 'commit': '94cfacd' }
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -34,7 +34,7 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=8
 
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%100v.\+/
+match OverLength /\%101v.\+/
 
 " spaces instead of tabs
 set tabstop=4
@@ -65,6 +65,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " keymap conf
 nnoremap <C-p> :Files<CR>
+nnoremap <leader>l oimport logging<CR>logger = logging.getLogger(__name__)<CR>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 nnoremap <leader>D :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>r :YcmCompleter GoToReferences<CR>
