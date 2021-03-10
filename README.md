@@ -17,7 +17,7 @@ apt install python-dev python3-dev build-essential cmake silversearcher-ag
 1. Compile Python with shared libraries support. In `pyenv` this requires:
 ```sh
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
-pyenv install 3.7.4
+pyenv install 3.8.8
 ```
 2. Install required `pip` packages:
 ```sh
