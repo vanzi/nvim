@@ -10,8 +10,12 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py', 'commit': '94cfacd' }
 Plug 'stsewd/isort.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" pinned to a commit where Python GoTo works best
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py', 'commit': '94cfacd' }
+
+" optional go support
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -74,7 +78,6 @@ nnoremap <Leader>. :bn<CR>
 nnoremap <S-Tab> :lcl<CR>:bn<CR>
 nnoremap <Leader><Leader> :only<CR>
 nnoremap <Leader>jf :%!python -m json.tool<CR>
-nnoremap <Leader>s :Isort -sp test-conf<CR>
 
 " paste
 set pastetoggle=<F3>
@@ -93,9 +96,13 @@ let g:ale_sign_column_always = 1
 let g:ale_python_flake8_options = '--config test-conf/flake8.ini'
 let g:ale_python_flake8_change_directory = 0
 let g:ale_python_autopep8_options = '--global-config test-conf/flake8.ini'
-let g:ale_python_isort_options = '-sp ' . fnamemodify('test-conf', ':p')
+let g:ale_python_isort_options = '--sp ' . fnamemodify('test-conf', ':p')
 let g:ale_linters = {'python': ['flake8']}
 let g:ale_fixers = {'python': ['autopep8', 'isort']}
+
+" alternative config with `black` instead of `autopep8`
+" let g:ale_python_black_options = '--line-length 100 --skip-string-normalization'
+" let g:ale_fixers = {'python': ['black', 'isort']}
 
 let g:airline#extensions#ale#enabled = 1
 
@@ -110,3 +117,11 @@ let g:ycm_extra_conf_vim_data = [
   \  'g:ycm_python_sys_path'
   \]
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/.ycm_conf.py'
+"let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+"let g:fzf_layout = { 'down': { 'width': 0.9, 'height': 0.6 } }
+"let g:fzf_layout = { 'down': '~40%' }
+
+" allow custom config per repository
+if filereadable('.vimrc.local')
+    so .vimrc.local
+endif
